@@ -1,7 +1,7 @@
 This readme has instructions of working through sampling street points from the road network and then crawling google street view api for street view images of the sampled points.
 
 1- The first step is to sample points where we would like to get street view images.
-sampling.py -s /data/BostonBspClassesFiltered.shp -p /data/tabular/BostonPOI.csv  -v
+python sampling.py -s data_1/BostonBspClassesFiltered.shp -p data_1/tabular/BostonPOI.csv  -v
 As a proof of concept, the code currently samples 10 points.
 
 This will output a file named "sample.csv"
