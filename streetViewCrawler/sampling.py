@@ -20,10 +20,10 @@ parser = argparse.ArgumentParser(description="sampling points/angles on streets"
 parser.add_argument("-s", "--streets", type=str, required=True,
                     help="path to streets shapefile")
 
-parser.add_argument("-o1", "--output1", type=str, default="delete_csvStreets.csv",
+parser.add_argument("-o1", "--output1", type=str, default="csvStreets.csv",
                     help="path for the output file")
 
-parser.add_argument("-o2", "--output2", type=str, default="delete_sample.csv",
+parser.add_argument("-o2", "--output2", type=str, default="sample.csv",
                     help="path for the output file")
 
 parser.add_argument("-p", "--pois", type=str, required=True,
@@ -42,7 +42,7 @@ args = parser.parse_args()
 def main():
     dataframe=hf.getStreetsInDataframe(args.streets,args.output1,args.verbose);
     POIs=hf.getPOIsByH3Key(args.pois,8)
-    sample=hf.getSamplePointsForCrawling(dataframe,POIs,args.output2,5000,True);
+    sample=hf.getSamplePointsForCrawling(dataframe,POIs,args.output2,10,True);
     # read the shapefile
     # streets = shapefile.Reader(args.streets)
     # # get the data in the right format

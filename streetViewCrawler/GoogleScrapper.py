@@ -23,6 +23,21 @@ def Crawl(point,angle):
     data = response.read()
     return data;
 
+def SimpleCrawl(row):
+    cameraPositions = ast.literal_eval(row['CameraPositions'])
+    point1 = [cameraPositions[0][0], cameraPositions[0][1]];
+    angle1 = (cameraPositions[0][2]+180) % 360;
+
+    try:
+        idx = np.random.randint(0, 1000000)
+        saveImage(Crawl(point1, angle1), point1, angle1, row, idx, 0);
+        return True;
+    except e:
+        print('something went wrong with this one')
+        return False;
+
+
+
 def CrawlEnclosed(row):
     cameraPositions=ast.literal_eval(row['CameraPositions'])
     point1=[cameraPositions[0][0],cameraPositions[0][1]];
@@ -34,7 +49,7 @@ def CrawlEnclosed(row):
     angle22 = cameraPositions[1][2]+30;
 
     try:
-        idx = np.random.randint(0, 1000000000)
+        idx = np.random.randint(0, 1000000)
         saveImage(Crawl(point1,angle11),point1,angle11,row,idx,0);
         saveImage(Crawl(point1,angle12),point1,angle12,row,idx,1);
         #saveImage(Crawl(point2,angle21),point2,angle21,row,idx,2);
@@ -77,8 +92,8 @@ def CrawlPoint(row):
 
 def main():
 
-    data=pd.read_csv("delete_sample.csv")
-    data['url']=data.apply(lambda x: CrawlEnclosed(x),axis=1)
+    data=pd.read_csv("sample.csv")
+    data['url']=data.apply(lambda x: SimpleCrawl(x),axis=1)
 
 
 
