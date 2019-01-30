@@ -15,7 +15,7 @@ import ast
 def Crawl(point,angle):
 
     lat1,lon1=point
-    APIKEY = 'AIzaSyDBRA3llQhTbqX4muyNXje3D4vEhqQa5eY'
+    APIKEY = 'ADD KEY HERE'
     url_ = 'https://maps.googleapis.com/maps/api/streetview?size=640x640&source=outdoor&location=' + \
            str(lat1) + ',' + str(lon1) + '&heading=' + str(angle) + '&pitch=0&key=' + APIKEY
 
@@ -75,7 +75,7 @@ def saveImage(imageData,point,angle,row,idx,order):
 
 
 def CrawlPoint(row):
-    APIKEY = 'AIzaSyAdnhOYjYs8fy7t9-8MAaMHc1unkpZVHvg'
+    APIKEY = 'ADD KEY HERE'
     lat1, lon1 = [float(_) for _ in re.findall('[0-9.\-]+', row['samplePoint'])]
     angle=row['angle'];
     for i in range(4):
